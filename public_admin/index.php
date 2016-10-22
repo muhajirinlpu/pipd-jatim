@@ -9,10 +9,20 @@
     </head>
     <body>
         <?php
-        if(isset($_SESSION['admindata'])){
-            include_once "view/admin.php";
-        }elseif(isset($_SESSION['redaksidata'])){
-            include_once "view/redaksi.php";
+        if(isset($_SESSION['admindata']) OR isset($_SESSION['redaksidata'])){?>
+            <nav id="nav">
+                <img src="" height="50px" alt="">
+                <ul class="button-nav">
+                    <li><a href="./">Home</a></li>
+                    <li><a class="menu-btn">Menu</a></li>
+                </ul>
+                <nav id="menu">
+
+                </nav>
+            </nav>
+            <?php
+            if(isset($_SESSION['admindata'])) include_once "view/admin.php";
+            else include_once "view/redaksi.php";
         }else {
             include_once "view/login.php";
         }

@@ -22,9 +22,26 @@ if(isset($_GET['admin'])){
             }
             break;
 
-        case '':
-
+        case 'tambahProvinsi':
+            $_POST['level'] = 2;
+            if(_run_iou("geos",$_POST)) _alert("{$_POST['nama']} ditambahkan");
+            else                        _alert("gagal");
+            _redirect("prev");
             break;
+
+        case 'tambahKota':
+            $_POST['level'] = 1;
+            if(_run_iou("geos",$_POST)) _alert("{$_POST['nama']} ditambahkan");
+            else                        _alert("gagal");
+            _redirect("prev");
+            break;
+
+        case "deleteGeos":
+            print_r($_POST);
+            if(_run("DELETE FROM geos WHERE geos_id=:geos_id",$_POST)) _alert("terhapus");
+            _redirect('prev');
+            break;
+
     }
 }elseif(isset($_GET['redaksi'])){
     if(empty($_SESSION['redaksidata'])) _redirect("./");

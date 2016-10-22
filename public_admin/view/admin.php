@@ -1,11 +1,16 @@
 <?php if(!isset($_SESSION['admindata'])) _redirect("./") ?>
-<nav id="nav">
-    <img src="" height="50px" alt="">
-    <ul class="button-nav">
-        <li><a href="./">Home</a></li>
-        <li><a class="menu-btn">Menu</a></li>
-    </ul>
-    <nav id="menu">
 
-    </nav>
+<nav id="sidenav">
+    <h2>Redaksi dashboard</h2>
+    <a href=".?p=lokasi">Lokasi</a>
+    <a href=".?p=kategori">Kategori</a>
 </nav>
+<section id="content-admin">
+    <?php
+    if(isset($_GET['p']) AND $_GET['p'] != ""){
+        include_once "admin/{$_GET['p']}.php";
+    }else{
+        echo "404 not found";
+    }
+    ?>
+</section>

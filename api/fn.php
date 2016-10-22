@@ -59,6 +59,7 @@ function _readAlert(){
 }
 
 function _redirect($location){
+    if($location=="prev") $location = $_SERVER["HTTP_REFERER"];
     header("location:$location");
     exit();
 }
