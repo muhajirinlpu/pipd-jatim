@@ -3,15 +3,12 @@
 <nav id="sidenav">
     <h2>Redaksi dashboard</h2>
     <a href=".?p=place">Konten tempat</a>
+    <a href=".?p=news">Konten berita</a>
 </nav>
 <section id="content-admin">
     <?php
         if(isset($_GET['p'])){
-            switch($_GET['p']){
-                case 'place':
-                    include_once "redaksi/place.php";
-                    break;
-            }
+            include_once "redaksi/{$_GET['p']}.php";
         }else{
 
         }

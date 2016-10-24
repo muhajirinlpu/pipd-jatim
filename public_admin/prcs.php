@@ -24,14 +24,14 @@ if(isset($_GET['admin'])){
 
         case 'tambahProvinsi':
             $_POST['level'] = 2;
-            if(_run_iou("geos",$_POST)) _alert("{$_POST['nama']} ditambahkan");
+            if(_run_iou("geos",$_POST)) _alert("{$_POST['name']} ditambahkan");
             else                        _alert("gagal");
             _redirect("prev");
             break;
 
         case 'tambahKota':
             $_POST['level'] = 1;
-            if(_run_iou("geos",$_POST)) _alert("{$_POST['nama']} ditambahkan");
+            if(_run_iou("geos",$_POST)) _alert("{$_POST['name']} ditambahkan");
             else                        _alert("gagal");
             _redirect("prev");
             break;
@@ -42,11 +42,39 @@ if(isset($_GET['admin'])){
             _redirect('prev');
             break;
 
+        case 'tambahKategori':
+            if(_run_iou("categories",$_POST)) _alert("{$_POST['name']} ditambahkan");
+            else                              _alert("gagal");
+            _redirect("prev");
+            break;
+
+        case "deleteKategori":
+            print_r($_POST);
+            if(_run("DELETE FROM categories WHERE cat_id=:cat_id",$_POST)) _alert("terhapus");
+            _redirect('prev');
+            break;
+
     }
 }elseif(isset($_GET['redaksi'])){
     if(empty($_SESSION['redaksidata'])) _redirect("./");
     switch(@$_GET['do']){
+        case "add":
+            $_POST['author'] = $_SESSION['redaksidata']['users_id'];
+            $_POST['slug']   = strtolower(str_replace(" ","-",$_POST['title'].date("dis")));
+            if(_run_iou("contens",$_POST)) _alert("{$_POST['title']} ditambahkan");
+            if(isset($_FILES['pics'])) {
+                $id = _lastId();
+                foreach($_FILES['pics']['tmp_name'] AS $key=>$val){
+                    if(move_uploaded_file($val,_dirPublic("assets/pic/").$_FILES['pics']['name'][$key]))
+                        if(_run_iou("pictures",["pic_name"=>$_FILES['pics']['name'][$key],"contents_id"=>$id])) _alert("foto terupload");
+                }
+            }
+            _redirect("prev");
+            break;
 
+        case "addNews":
+
+            break;
     }
 }else {
     switch (@$_GET['do']) {

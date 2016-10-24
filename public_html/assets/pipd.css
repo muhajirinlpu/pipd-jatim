@@ -10,7 +10,7 @@ html,body{
     color: white;
 }
 
-.form-orange form input,select{
+.form-orange form input,select,textarea{
     padding: 10px;
     background-color: rgba(0,0,0,0.4);
     color: white;

@@ -49,6 +49,12 @@ function _alert($message){
     $_SESSION['TMP']['MSG'][] = $message;
 }
 
+function _response($response,$message){
+    echo json_encode(
+        ["response"=>$response,"message"=>$message]
+    );
+}
+
 function _readAlert(){
     $alert = "";
     $tmp = @$_SESSION['TMP']['MSG'];
