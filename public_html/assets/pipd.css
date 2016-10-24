@@ -4,6 +4,10 @@ html,body{
     font-family: Arial;
 }
 
+h1,h2{
+    opacity: 0.84;
+}
+
 .form-orange form{
     padding: 60px;
     background-color: rgba(0,0,0,0.5);
@@ -26,10 +30,20 @@ a{
 nav#nav{
     z-index: 10;
     position: fixed;
+    top:0;
     width: 100%;
     height: 50px;
     background-color: #424242;
     border-bottom: 2px solid #EF6C00;
+}
+
+nav#menu{
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    background-color: #424242;
+    border-bottom: 2px solid #EF6C00;
+    display: none;
 }
 
 .button-nav{
@@ -77,5 +91,63 @@ nav#nav{
     position: absolute;
     right: 0;
     width: 80%;
-    margin-top: 60px;
+    margin-top: 50px;
+}
+
+#slider > *{
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    background-size:cover ;
+    top: 50px;
+}
+
+#slider > div > h2{
+    color: white;
+    margin-left: 10px;
+    margin-top: 20%;
+}
+
+#slider > div > p{
+    color: white;
+    width: 500px;
+    text-align: justify;
+    margin-left: 10px;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+#content-place{
+    margin-top: 550px;
+}
+
+.form-search{
+    width: 34%;
+    float: right;
+    margin-right: 50px;
+}
+
+.form-search >form {
+    padding: 10px;
+}
+
+.places-container{
+    background-color: rgba(0,0,0,0.2);
+    margin-top:10px;
+}
+
+.place-contents{
+    float: left;
+    width:200px;
+    background-color: white;
+    margin:20px;
+    text-align: center;
+}
+
+.place-contents > span{
+
+}
+
+.container{
+    margin:0 60px;
 }

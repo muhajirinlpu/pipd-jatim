@@ -36,7 +36,7 @@ function _paging($limit,$query,$val=[]){
     return [
         "start_item"  =>  $count+1,
         "total_page"  =>  ceil(_run($query,$val)->rowCount()/$limit),
-        "data"        =>  _get(_run($query." LIMIT $count,$limit".$val))
+        "data"        =>  _get(_run($query." LIMIT $count,$limit",$val))
     ];
 }
 
