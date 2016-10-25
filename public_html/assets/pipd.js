@@ -59,6 +59,8 @@ $(function(){
         }
     });*/
 
+
+
     var fun = false;
     $(".fun-pic").bind("click",function(){
         if (!fun) {

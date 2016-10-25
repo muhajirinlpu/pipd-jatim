@@ -1,4 +1,7 @@
-<?php require_once "../api/boot.php" ?>
+<?php require_once "../api/boot.php";
+echo _readAlert();
+unset($_SESSION['TMP']);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +20,17 @@
         <nav id="menu">
             <ul>
                 <ol>Akun</ol>
+                <?php if(isset($_SESSION['userdata'])): ?>
+                <li><a href="./?p=home&sp=profil">Profil</a></li>
+                <li><a href="./prcs.php?do=logout">Logout</a></li>
+                <?php else: ?>
                 <li><a href="./?p=form&sp=masuk">Masuk</a></li>
                 <li><a href="./?p=form&sp=daftar">Daftar</a></li>
+                <?php endif; ?>
             </ul>
             <div style="clear: both;"></div>
         </nav>
     </nav>
-
     <?php
     if(isset($_GET['p'])){
         switch($_GET['p']){
@@ -47,6 +54,5 @@
         _redirect("./?p=home");
     }
     ?>
-<?= _readAlert() ?>
 </body>
 </html>

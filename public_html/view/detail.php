@@ -24,6 +24,22 @@ $rate = _get(_run("SELECT AVG(val) FROM rates WHERE contents_id = ?",[$content['
     </div>
     <div class="">
         <h2 class="fun-heading">Beri rating</h2>
+        <div class="form-orange">
+            <form action="./prcs.php?user&do=giveRate" method="post">
+                <select name="val" id="">
+                    <?php
+                    $lonely_rate = _get(_run("SELECT val FROM rates WHERE author = ? AND contents_id = ?",[$_SESSION['userdata']['users_id'],$_SESSION['TMP']['contents_id']]),1)['val'];
+                    $kriteria_rate = ["sangat buruk","buruk","biasa","baik","sangat baik"];
+                    foreach($kriteria_rate AS $key=>$value){
+                        $stat = "";
+                        if($lonely_rate == $key+1) $stat = "selected";
+                        echo "<option {$stat} value='".($key+1)."'>{$value}</option>";
+                    }
+                    ?>
+                </select>
+                <input type="submit">
+            </form>
+        </div>
         <h2 class="fun-heading">Komentar</h2>
     </div>
 </div>

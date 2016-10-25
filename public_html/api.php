@@ -6,7 +6,7 @@ switch(@$_GET['do']){
                                  FROM contens,pictures
                                  WHERE type = 1 AND  contens.contents_id = pictures.contents_id AND ver_stat = 1
                                  GROUP BY contens.contents_id
-                                 ORDER BY hit DESC
+                                 ORDER BY create_at DESC
                                  LIMIT 5 ")));
         break;
 

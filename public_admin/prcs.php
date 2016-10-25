@@ -78,7 +78,6 @@ if(isset($_GET['admin'])){
     }
 }else {
     switch (@$_GET['do']) {
-
         case 'activate':
             if (_run("UPDATE users SET ver_stat = 1 WHERE ver_code = ?", [$_GET['_key']])) _alert("akun diaktivasi");
             else                                                                           _alert("akun gagal diaktivasi");
@@ -86,7 +85,7 @@ if(isset($_GET['admin'])){
             break;
 
         case 'login':
-            $stmt = _run("SELECT users_id,email,pass,role,avatar,ver_stat,create_at FROM users WHERE email = ?", [$_POST['email']]);
+            $stmt = _run("SELECT users_id,email,pass,role,avatar,ver_stat,create_at FROM users WHERE email = ? AND (role = 3 OR role = 2)", [$_POST['email']]);
             if ($stmt->rowCount() == 1) {
                 $stmt = _get($stmt, 1);
                 if (password_verify($_POST['pass'], $stmt['pass'])) {
