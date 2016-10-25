@@ -21,32 +21,21 @@
     <div id="slider">
         <!--yay nothing here-->
     </div>
-    <div id="content-place">
-        <div id="places">
-            <center><h1>Tempat yang mungkin anda suka</h1></center>
-            <div class="form-orange form-search">
-                <form action="" method="get">
-                    <input type="text" name="q" placeholder="cari disini">
-                    <select name="cat_id" id="">
-                        <option value="">--pilh kategori--</option>
-                        <?php $prov = _get(_run("SELECT cat_id,name FROM categories")); ?>
-                        <?php foreach($prov AS $val) echo "<option value='{$val['cat_id']}'>{$val['name']}</option>"?>
-                    </select>
-                    <input type="submit" value="cari">
-                </form>
-            </div>
-            <div style="clear: both"></div>
-            <div class="places-container">
-                <div class="container">
-                    <div class="js-parse">
-                        <!--somethings here...-->
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-            </div>
-            asome
-        </div>
-    </div>
+    <?php
+    if(isset($_GET['p'])){
+        switch($_GET['p']){
+            case "home":
+                include_once "view/hmpg.php";
+                break;
+
+            case "":
+                _redirect("./?p=home");
+                break;
+        }
+    }else{
+        _redirect("./?p=home");
+    }
+    ?>
 <?= _readAlert() ?>
 </body>
 </html>

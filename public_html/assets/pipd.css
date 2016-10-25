@@ -151,3 +151,14 @@ nav#menu{
 .container{
     margin:0 60px;
 }
+
+.paging {
+    float: right;
+}
+
+.paging > a{
+    text-decoration: none;
+    color: white;
+    background-color: #EF6C00;
+    padding: 5px;
+}

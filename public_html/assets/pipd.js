@@ -51,13 +51,13 @@ $(function(){
     //fn start
     fn.initSlider();
 
-    var page = 1;
+   /* var page = 1;
     $(window).scroll(function(){
         if ($(window).scrollTop() == $(document).height() - $(window).height()){
             fn.loadPlace(page);
             page++;
         }
-    });
+    });*/
 
     $(".confirm").bind("click",function(){
         var conf = confirm($(this).data("msg"));
