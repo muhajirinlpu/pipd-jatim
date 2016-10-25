@@ -60,7 +60,7 @@ function _readAlert(){
     $tmp = @$_SESSION['TMP']['MSG'];
     if(empty($tmp)) $tmp =[];
     foreach($tmp AS $value) $alert .= "alert('{$value}');";
-    unset($_SESSION["TMP"]);
+    unset($_SESSION["TMP"]['MSG']);
     return "<script>$alert</script>";
 }
 

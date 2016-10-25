@@ -15,17 +15,28 @@
             <li><a class="menu-btn">Menu</a></li>
         </ul>
         <nav id="menu">
-
+            <ul>
+                <ol>Akun</ol>
+                <li><a href="./?p=form&sp=masuk">Masuk</a></li>
+                <li><a href="./?p=form&sp=daftar">Daftar</a></li>
+            </ul>
+            <div style="clear: both;"></div>
         </nav>
     </nav>
-    <div id="slider">
-        <!--yay nothing here-->
-    </div>
+
     <?php
     if(isset($_GET['p'])){
         switch($_GET['p']){
             case "home":
                 include_once "view/hmpg.php";
+                break;
+
+            case "form":
+                include_once "view/form.php";
+                break;
+
+            case "detail";
+                include_once "view/detail.php";
                 break;
 
             case "":

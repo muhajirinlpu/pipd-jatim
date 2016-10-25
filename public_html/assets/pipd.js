@@ -59,6 +59,23 @@ $(function(){
         }
     });*/
 
+    var fun = false;
+    $(".fun-pic").bind("click",function(){
+        if (!fun) {
+            $(this).css({
+                "transform" : "scale(3)",
+                "position"  : "fixed",
+                "top"       : "40%",
+                "transition": "0.5s",
+                "z-index"   : "100"
+            }).addClass("center");
+            fun = true;
+        }else{
+            $(this).removeAttr("style").removeClass("center");
+            fun = false;
+        }
+    });
+
     $(".confirm").bind("click",function(){
         var conf = confirm($(this).data("msg"));
         if(conf) window.location = $(this).data("action");
