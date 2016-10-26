@@ -12,6 +12,10 @@ $rate = _get(_run("SELECT AVG(val) FROM rates WHERE contents_id = ?",[$content['
         margin-right: 350px;
     }
 </style>
+<script type="text/javascript">
+    var users_id = <?= isset($_SESSION['userdata']['users_id']) ? $_SESSION['userdata']['users_id'] :"null" ?> ;
+    var contents_id = <?= $content['contents_id'] ?>;
+</script>
 <div class="container" style="margin-top: 70px">
     <center><h1><?= $content['title'] ?></h1></center>
     <pre class="fun-text">
@@ -25,7 +29,7 @@ $rate = _get(_run("SELECT AVG(val) FROM rates WHERE contents_id = ?",[$content['
     <div class="">
         <h2 class="fun-heading">Beri rating</h2>
         <div class="form-orange">
-            <form action="./prcs.php?user&do=giveRate" method="post">
+            <form action="./prcs.php?user&do=giveRate" method="post" style="padding: 5px">
                 <select name="val" id="">
                     <?php
                     $lonely_rate = _get(_run("SELECT val FROM rates WHERE author = ? AND contents_id = ?",[$_SESSION['userdata']['users_id'],$_SESSION['TMP']['contents_id']]),1)['val'];
@@ -41,6 +45,12 @@ $rate = _get(_run("SELECT AVG(val) FROM rates WHERE contents_id = ?",[$content['
             </form>
         </div>
         <h2 class="fun-heading">Komentar</h2>
+        <div class="form-orange">
+            <form action="#">
+                <textarea name="content_text" id="komen-txt" cols="50" rows="10"></textarea><br>
+                <input type="button" name="komen-btn" value="kirim">
+            </form>
+        </div>
     </div>
 </div>
 <div class="right-content">

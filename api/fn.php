@@ -66,6 +66,7 @@ function _readAlert(){
 
 function _redirect($location){
     if($location=="prev") $location = $_SERVER["HTTP_REFERER"];
+    if($location=="home") $location = "./?p=home";
     header("location:$location");
     exit();
 }

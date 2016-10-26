@@ -23,6 +23,20 @@ if(isset($_GET['user'])) {
 
 
 switch(@$_GET['do']){
+    case "getSlider":
+        _response(200,_get(_run("SELECT contens.*,pictures.pic_name
+                                 FROM contens,pictures
+                                 WHERE type = 1 AND  contens.contents_id = pictures.contents_id AND ver_stat = 1
+                                 GROUP BY contens.contents_id
+                                 ORDER BY create_at DESC
+                                 LIMIT 5 ")));
+        break;
+
+    case "giveComment":
+        if(_run_iou("comments",$_POST)) _response(200,"tunggu konfirmasi admin untuk menampilkan komentar");
+        else _response(200,"gagal oeh");
+        break;
+
     case "register":
         if($_POST['pass'][0] != $_POST['pass'][1]){
             _alert("password verifikasi salah");
@@ -46,7 +60,7 @@ switch(@$_GET['do']){
     case 'activate':
         if (_run("UPDATE users SET ver_stat = 1 WHERE ver_code = ?", [$_GET['_key']])) _alert("akun diaktivasi");
         else                                                                           _alert("akun gagal diaktivasi");
-        _redirect("./");
+        _redirect("home");
         break;
 
     case 'login':
@@ -56,23 +70,25 @@ switch(@$_GET['do']){
             if (password_verify($_POST['pass'], $stmt['pass'])) {
                 if($stmt['ver_stat'] == 0) {
                     _alert("akun belum di verifikasi");
-                    _redirect("./");
+                    _redirect("prev");
                 }
                 unset($stmt['pass']);
                 $_SESSION['userdata'] = $stmt;
                 _alert("hy " . $stmt['email']);
+                _redirect("home");
             } else {
                 _alert("wrong email or password");
+                _redirect("prev");
             }
         } else {
             _alert("wrong email or password");
+            _redirect("prev");
         }
-        _redirect("./");
         break;
 
     case 'logout':
         unset($_SESSION['userdata']);
-        _redirect("./");
+        _redirect("home");
         break;
 
 }

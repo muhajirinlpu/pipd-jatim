@@ -5,7 +5,8 @@ $(function(){
     var fn = {
         initSlider : function(){
             var size;
-            $.getJSON("./api.php?do=getSlider",function(data){
+
+            $.getJSON("./prcs.php?do=getSlider",function(data){
                 $.each(data['message'],function (a,b) {
                     var div = $("<div></div>").css({
                         "backgroundImage" : "url('assets/pic/"+ b.pic_name +"')"
@@ -51,16 +52,15 @@ $(function(){
     //fn start
     fn.initSlider();
 
-   /* var page = 1;
-    $(window).scroll(function(){
-        if ($(window).scrollTop() == $(document).height() - $(window).height()){
-            fn.loadPlace(page);
-            page++;
-        }
-    });*/
-
-
-
+    /*if(window.location.search = "?p=home"){
+    }*/
+    /* var page = 1;
+     $(window).scroll(function(){
+     if ($(window).scrollTop() == $(document).height() - $(window).height()){
+     fn.loadPlace(page);
+     page++;
+     }
+     });*/
     var fun = false;
     $(".fun-pic").bind("click",function(){
         if (!fun) {
@@ -76,6 +76,30 @@ $(function(){
             $(this).removeAttr("style").removeClass("center");
             fun = false;
         }
+    });
+
+    $("input[name=komen-btn]").bind("click",function(){
+        var text = $("#komen-txt").val();
+        console.log(text);
+        if (users_id == null || contents_id == null){
+            alert("login untuk memberi komentar");
+        }else{
+            $.ajax({
+                url : "./prcs.php?do=giveComment",
+                method : "post",
+                data : {
+                    author : users_id,
+                    contents_id : contents_id,
+                    text : text
+                },
+                dataType : "json",
+                success : function(data){
+                    console.log(data);
+                    alert(data['message']);
+                }
+            });
+        }
+        $("#komen-txt").val('');
     });
 
     $(".confirm").bind("click",function(){
