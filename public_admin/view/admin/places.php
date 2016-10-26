@@ -1,4 +1,4 @@
-<?php $places = _paging(10,"SELECT A.*,B.email FROM `contens` AS A , `users` AS B WHERE A.author = B.users_id GROUP BY A.contents_id ORDER BY hit DESC");?>
+<?php $places = _paging(5,"SELECT A.*,B.email FROM `contens` AS A , `users` AS B WHERE A.author = B.users_id GROUP BY A.contents_id ORDER BY hit DESC");?>
 <table border="1">
     <tr>
         <th>No</th>
@@ -22,4 +22,10 @@
                 </td>
             </tr>
         <?php endforeach; ?>
+    <div class="paging" style="position: absolute;top: 180%;right: 10%;">
+        <?php
+        for($i = 1 ; $i <= $places['total_page'] ; $i++)
+            echo "<a href='"._fetchUrl($i)."' >{$i}</a>";
+        ?>
+    </div>
 </table>

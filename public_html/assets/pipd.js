@@ -85,7 +85,7 @@ $(function(){
             alert("login untuk memberi komentar");
         }else{
             $.ajax({
-                url : "./prcs.php?do=giveComment",
+                url : "./prcs.php?user&do=giveComment",
                 method : "post",
                 data : {
                     author : users_id,

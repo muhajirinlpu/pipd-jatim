@@ -47,9 +47,22 @@ $rate = _get(_run("SELECT AVG(val) FROM rates WHERE contents_id = ?",[$content['
         <h2 class="fun-heading">Komentar</h2>
         <div class="form-orange">
             <form action="#">
-                <textarea name="content_text" id="komen-txt" cols="50" rows="10"></textarea><br>
+                <textarea name="content_text" id="komen-txt" cols="50" rows="10" placeholder="beri komentar"></textarea><br>
                 <input type="button" name="komen-btn" value="kirim">
             </form>
+        </div>
+        <div id="komentar-list">
+            <?php
+                $komen = _get(_run("SELECT comments.*,users.email FROM comments,users WHERE users.users_id = comments.author AND contents_id = ? AND comments.ver_stat = 1",[$content['contents_id']]));
+             ?>
+            <?php foreach($komen AS $val): ?>
+                <div>
+                    <h3><?= $val['email'] ?></h3>
+                    <h4><?= $val['create_at'] ?></h4>
+                    <p><?= $val['text'] ?></p>
+                    <?= $val['author'] == @$_SESSION['userdata']['users_id'] ? "<a href=\"./user&do=hapusKomen&id={$val['comments_id']}\">Hapus komentar</a>" : "" ?>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

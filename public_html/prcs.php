@@ -18,7 +18,18 @@ if(isset($_GET['user'])) {
             if(_run_iou("rates",$data)) _alert("rating dikirim");
             _redirect("prev");
             break;
+
+        case "giveComment":
+            if(_run_iou("comments",$_POST)) _response(200,"tunggu konfirmasi admin untuk menampilkan komentar");
+            else _response(200,"gagal oeh");
+            break;
+
+        case "hapusKomen":
+            if(_run("DELETE FROM comments WHERE comments_id = ? AND author = ?",[$_GET['id'],$_SESSION['userdata']['users_id']])) _alert("komentar dihapus");
+            _redirect("prev");
+            break;
     }
+
 }
 
 
@@ -30,11 +41,6 @@ switch(@$_GET['do']){
                                  GROUP BY contens.contents_id
                                  ORDER BY create_at DESC
                                  LIMIT 5 ")));
-        break;
-
-    case "giveComment":
-        if(_run_iou("comments",$_POST)) _response(200,"tunggu konfirmasi admin untuk menampilkan komentar");
-        else _response(200,"gagal oeh");
         break;
 
     case "register":

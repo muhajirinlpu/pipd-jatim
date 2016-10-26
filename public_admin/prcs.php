@@ -61,6 +61,13 @@ if(isset($_GET['admin'])){
             _redirect("prev");
             break;
 
+        case "comments":
+            $a = "gagal";
+            if(_run_iou("comments",["comments_id" => $_GET['id'],"ver_stat" => $_GET['val']]))$a = "status diganti";
+            _alert($a);
+            _redirect("prev");
+            break;
+
     }
 }elseif(isset($_GET['redaksi'])){
     if(empty($_SESSION['redaksidata'])) _redirect("./");
