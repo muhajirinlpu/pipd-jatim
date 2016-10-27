@@ -1,10 +1,10 @@
 <?php if(!isset($_SESSION['admindata'])) _redirect("./") ?>
 
 <nav id="sidenav">
-    <h2>Redaksi dashboard</h2>
+    <h2>Admin dashboard</h2>
     <a href=".?p=lokasi">Lokasi</a>
     <a href=".?p=kategori">Kategori</a>
-    <a href=".?p=places">Wisata konfirmasi</a>
+    <a href=".?p=places">Konten konfirmasi</a>
     <a href=".?p=comments">Komentar konfirmasi</a>
 </nav>
 <section id="content-admin">

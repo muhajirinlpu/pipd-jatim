@@ -1,6 +1,7 @@
 <?php require_once "../api/boot.php";
 echo _readAlert();
 unset($_SESSION['TMP']);
+_run_iou("visitors",["ip"=>$_SERVER['REMOTE_ADDR']]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,6 +28,12 @@ unset($_SESSION['TMP']);
                 <li><a href="./?p=form&sp=masuk">Masuk</a></li>
                 <li><a href="./?p=form&sp=daftar">Daftar</a></li>
                 <?php endif; ?>
+            </ul>
+            <ul>
+                <ol>Peta situs</ol>
+                <li><a href="./">Home</a></li>
+                <li><a href="#places">Tempat wisata</a></li>
+                <li><a href="#news">Berita</a></li>
             </ul>
             <div style="clear: both;"></div>
         </nav>

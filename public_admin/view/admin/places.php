@@ -1,4 +1,4 @@
-<?php $places = _paging(5,"SELECT A.*,B.email FROM `contens` AS A , `users` AS B WHERE A.author = B.users_id GROUP BY A.contents_id ORDER BY hit DESC");?>
+<?php $places = _paging(5,"SELECT A.*,B.email FROM `contens` AS A , `users` AS B WHERE A.author = B.users_id GROUP BY A.contents_id ORDER BY ver_stat ASC");?>
 <table border="1">
     <tr>
         <th>No</th>

@@ -2,6 +2,7 @@
 $content  = _run("SELECT * FROM `contens` WHERE  slug = ?",[$_GET['title']]);
 if($content->rowCount() != 1) _redirect("./");
 $content = _get($content,1);
+_run("UPDATE contens SET hit = hit+1 WHERE contents_id = {$content['contents_id']}");
 $_SESSION['TMP']['contents_id'] = $content['contents_id'];
 $pictures = _get(_run("SELECT * FROM pictures WHERE contents_id = ?",[$content['contents_id']]));
 $date = date_create($content['create_at']);
