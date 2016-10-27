@@ -7,4 +7,5 @@ if(isset($_GET['sp'])){
 
 }else{
     include_once "hmpg/places.php";
+    include_once "hmpg/news.php";
 }

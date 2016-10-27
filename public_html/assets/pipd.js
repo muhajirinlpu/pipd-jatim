@@ -13,7 +13,7 @@ $(function(){
                     }).attr("data-action",a);
                     var h1 = $("<h2></h2>").html(b.title);
                     var p = $("<p></p>").html(b.descrip.substr(0,190)+"... ");
-                    var a = $("<a></a>").attr("href","./?p=detail&title="+ b.slug).html("selengkapnya");
+                    var a = $("<a></a>").attr("href","./?p=detail&title="+ b.slug).html("selengkapnya").css({"color":"white"});
                     $(a).appendTo(p);
                     $(h1).appendTo(div);
                     $(p).appendTo(div);

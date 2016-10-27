@@ -17,8 +17,18 @@
                     <li><a class="menu-btn">Menu</a></li>
                 </ul>
                 <nav id="menu">
-
+                <ul>
+                    <ol>Akun</ol>
+                    <?php if(isset($_SESSION['admindata']) OR isset($_SESSION['redaksidata'])): ?>
+                    <li><a href="./prcs.php?do=logout">Logout</a></li>
+                    <?php else: ?>
+                    <li><a href="./?p=form&sp=masuk">Masuk</a></li>
+                    <li><a href="./?p=form&sp=daftar">Daftar</a></li>
+                    <?php endif; ?>
+                </ul>
+                <div style="clear: both;"></div>
                 </nav>
+            </nav>
             </nav>
             <?php
             if(isset($_SESSION['admindata'])) include_once "view/admin.php";

@@ -3,9 +3,9 @@
         <center><h1>Tempat yang mungkin anda suka</h1></center>
         <div id="kota">
         <?php
-        $kota = _get(_run("SELECT * FROM geos WHERE level = 1"));
+        $kota = _get(_run("SELECT cat_id,name FROM categories"));
         foreach($kota AS $val){
-            echo "<a href='?p=home&q=&cat_id=&geos_id={$val['geos_id']}'>{$val['name']}</a>";
+            echo "<a href='?p=home&q=&geos_id=&cat_id={$val['cat_id']}'>{$val['name']}</a>";
         }
         ?>
         </div>
@@ -13,18 +13,18 @@
             <form action="" method="get">
                 <input type="text" name="p" value="home" style="display: none">
                 <input type="text" name="q" placeholder="cari disini" value="<?= @$_GET['q'] ?>">
-                <select name="cat_id" id="">
-                    <option value="">--pilh kategori--</option>
-                    <?php $prov = _get(_run("SELECT cat_id,name FROM categories")); ?>
+                <select name="geos_id" id="">
+                    <option value="">--pilh kota--</option>
+                    <?php $prov = _get(_run("SELECT * FROM geos WHERE level = 1")); ?>
                     <?php
                         foreach($prov AS $val) {
                             $stat = "";
-                            @$_GET['cat_id'] == $val['cat_id'] ? $stat = "selected" : $stat = '';
-                            echo "<option {$stat} value='{$val['cat_id']}'>{$val['name']}</option>";
+                            @$_GET['geos_id'] == $val['geos_id'] ? $stat = "selected" : $stat = '';
+                            echo "<option {$stat} value='{$val['geos_id']}'>{$val['name']}</option>";
                         }
                     ?>
                 </select>
-                <input type="number" name="geos_id" value="" style="display: none">
+                <input type="number" name="cat_id" value="" style="display: none">
                 <input type="submit" value="cari">
             </form>
         </div>
