@@ -111,4 +111,16 @@ $(function(){
         $("#menu").slideToggle(400);
     });
 
+    $("#login-btn").bind("mouseover",function(){
+        $("#login").fadeIn(300);
+        $(this).css({
+            "backgroundColor":"#EF6C00"
+        });
+    });
+
+    $("#login").bind("mouseleave",function(){
+        $("#login-btn").removeAttr("style");
+        $(this).fadeOut();
+    });
+
 });

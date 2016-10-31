@@ -14,29 +14,40 @@ _run_iou("visitors",["ip"=>$_SERVER['REMOTE_ADDR']]);
 <body>
     <nav id="nav">
         <img src="" height="50px" alt="">
+        <p id="text-logo">Pusat informasi pariwisata daerah</p>
         <ul class="button-nav">
             <li><a href="./">Home</a></li>
-            <li><a class="menu-btn">Menu</a></li>
-        </ul>
-        <nav id="menu">
-            <ul>
-                <ol>Akun</ol>
-                <?php if(isset($_SESSION['userdata'])): ?>
+            <li><a href="./p=home#places">Pariwisata</a></li>
+            <li><a href="./p=home#news">Berita</a></li>
+            <?php if(isset($_SESSION['userdata'])): ?>
                 <li><a href="./?p=home&sp=profil">Profil</a></li>
                 <li><a href="./prcs.php?do=logout">Logout</a></li>
-                <?php else: ?>
-                <li><a href="./?p=form&sp=masuk">Masuk</a></li>
-                <li><a href="./?p=form&sp=daftar">Daftar</a></li>
-                <?php endif; ?>
+            <?php else: ?>
+                <li><a id="login-btn">Masuk</a></li>
+                <div id="login">
+                    <div class="form-orange">
+                        <form action="../prcs.php?do=login" method="post">
+                            <h2>Login...</h2>
+                            <input type="text" name="email" placeholder="email"><br>
+                            <input type="password" name="pass" placeholder="password"><br>
+                            <input type="submit" value="Login">
+                            <p>belum punya akun ? <a href="./?p=form&sp=daftar">daftar sekarang</a></p>
+                        </form>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </ul>
+        <!--<nav id="menu">
+            <ul>
+                <ol>Akun</ol>
+
             </ul>
             <ul>
                 <ol>Peta situs</ol>
                 <li><a href="./">Home</a></li>
-                <li><a href="#places">Tempat wisata</a></li>
-                <li><a href="#news">Berita</a></li>
             </ul>
             <div style="clear: both;"></div>
-        </nav>
+        </nav>-->
     </nav>
     <?php
     if(isset($_GET['p'])){

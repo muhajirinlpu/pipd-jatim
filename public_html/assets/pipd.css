@@ -268,3 +268,22 @@ nav#menu ul li a:hover{
     color: #424242;
     margin:0;
 }
+
+#login{
+    position: absolute;
+    right: 0;
+    top: 35px;
+    display: none;
+}
+
+#login > * > *{
+    margin-top: 0;!important;
+}
+
+#text-logo{
+    color: white;
+    width: 150px;
+    position: absolute;
+    top: -10px;
+    left: 60px;
+}
