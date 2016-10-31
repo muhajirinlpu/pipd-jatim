@@ -2,6 +2,7 @@
 <table border="1">
     <tr>
         <th>No</th>
+        <th>Type</th>
         <th>Author</th>
         <th>Nama</th>
         <th>deskripsi</th>
@@ -11,6 +12,7 @@
         <?php foreach($places['data'] AS $key=>$val): ?>
             <tr>
                 <td><?= $places['start_item']+$key ?></td>
+                <td><?= $val['type'] == 1 ? "Wisata" : "berita/artikel" ?></td>
                 <td><?= $val['email'] ?></td>
                 <td><?= $val['title'] ?></td>
                 <td><?= substr($val['descrip'],0,20) ?>...</td>

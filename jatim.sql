@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2016 at 11:08 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: Oct 31, 2016 at 04:26 AM
+-- Server version: 5.6.25
+-- PHP Version: 5.6.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,39 +23,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `belibeli`
---
-
-CREATE TABLE `belibeli` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(24) NOT NULL,
-  `merk` varchar(24) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `belibeli`
---
-
-INSERT INTO `belibeli` (`id`, `nama`, `merk`) VALUES
-(1, 'A', 'Bensin'),
-(2, 'A', 'Solar'),
-(3, 'B', 'Bensin'),
-(4, 'B', 'Solar'),
-(5, 'B', 'Solar'),
-(6, 'B', 'WOWO'),
-(7, 'A', 'COCACOLA');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `categories`
 --
 
-CREATE TABLE `categories` (
+CREATE TABLE IF NOT EXISTS `categories` (
   `cat_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`cat_id`, `name`, `create_at`) VALUES
+(1, 'Taman', '2016-10-31 01:31:54');
 
 -- --------------------------------------------------------
 
@@ -63,7 +45,7 @@ CREATE TABLE `categories` (
 -- Table structure for table `comments`
 --
 
-CREATE TABLE `comments` (
+CREATE TABLE IF NOT EXISTS `comments` (
   `comments_id` int(11) NOT NULL,
   `author` int(11) NOT NULL,
   `contents_id` int(11) NOT NULL,
@@ -77,18 +59,26 @@ CREATE TABLE `comments` (
 -- Table structure for table `contens`
 --
 
-CREATE TABLE `contens` (
+CREATE TABLE IF NOT EXISTS `contens` (
   `contents_id` int(11) NOT NULL,
   `author` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `descrip` longtext NOT NULL,
   `hit` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `geos_id` int(11) NOT NULL,
   `cat_id` int(11) NOT NULL,
   `ver_stat` int(11) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contens`
+--
+
+INSERT INTO `contens` (`contents_id`, `author`, `type`, `title`, `descrip`, `hit`, `slug`, `geos_id`, `cat_id`, `ver_stat`, `create_at`) VALUES
+(1, 13, 1, 'Taman bungkul', 'Taman Bungkul berlokasi di Jalan Raya Darmo Surabaya, taman ini terletak di area sekitar 900 meter persegi dan \r\ndilengkapi dengan fasilitas pendukung seperti amfiteater dengan diameter 33 M, jogging track, taman bermain \r\nanak-anak dan lahan untuk papan luncur. Selain itu, taman ini juga difasilitasi dengan akses internet nirkabel.\r\n\r\nTaman Bungkul diambil dari nama Mbah Bungkul, dimana makam beliau juga terletak pada taman ini. Mbah Bungkul \r\nadalah julukan untuk Ki Supo, seorang ulama di kerajaan Majapahit (abad XV), yang juga saudara ipar Raden \r\nRahmat atau Sunan Ampel.\r\n\r\nTaman Bungkul sudah seperti jantung kota Surabaya. Taman ini sekarang menjadi taman wisata bagi mereka yang \r\ningin menikmati suasana hijau di tengah kota. Beberapa acara juga sering di gelar ini taman ini bagi kegiatan \r\nhiburan atau kebudayaan\r\n\r\nDi bagian belakang taman, terdapat beberapa warung yang menawarkan menu khas Surabaya, seperti Rawon, Soto, \r\nBakso dan banyak lagi. Taman Bungkul selalu ramai dikunjungi dari pagi hingga malam hari dan menjadi bagian \r\ndari kota Surabaya yang pantas untuk dibanggakan.\r\n', 1, 'taman-bungkul310725', 2, 1, 1, '2016-10-31 01:32:31');
 
 -- --------------------------------------------------------
 
@@ -96,7 +86,7 @@ CREATE TABLE `contens` (
 -- Table structure for table `deals`
 --
 
-CREATE TABLE `deals` (
+CREATE TABLE IF NOT EXISTS `deals` (
   `deals` int(11) NOT NULL,
   `contents_id` int(11) NOT NULL,
   `owner` int(11) NOT NULL,
@@ -112,13 +102,24 @@ CREATE TABLE `deals` (
 -- Table structure for table `geos`
 --
 
-CREATE TABLE `geos` (
+CREATE TABLE IF NOT EXISTS `geos` (
   `geos_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `parent` int(11) NOT NULL,
   `level` int(11) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `geos`
+--
+
+INSERT INTO `geos` (`geos_id`, `name`, `parent`, `level`, `create_at`) VALUES
+(1, 'Jawa timur', 0, 2, '2016-10-31 01:22:13'),
+(2, 'Surabaya', 1, 1, '2016-10-31 01:22:18'),
+(3, 'Malang', 1, 1, '2016-10-31 01:22:46'),
+(4, 'Sidoarjo', 1, 1, '2016-10-31 01:22:55'),
+(5, 'Kediri', 1, 1, '2016-10-31 01:23:04');
 
 -- --------------------------------------------------------
 
@@ -126,12 +127,20 @@ CREATE TABLE `geos` (
 -- Table structure for table `pictures`
 --
 
-CREATE TABLE `pictures` (
+CREATE TABLE IF NOT EXISTS `pictures` (
   `pictures_id` int(11) NOT NULL,
   `contents_id` int(11) NOT NULL,
   `pic_name` varchar(255) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pictures`
+--
+
+INSERT INTO `pictures` (`pictures_id`, `contents_id`, `pic_name`, `create_at`) VALUES
+(1, 1, 'taman-bungkul.jpg', '2016-10-31 01:32:31'),
+(2, 1, 'taman-bungkul2.jpg', '2016-10-31 01:32:31');
 
 -- --------------------------------------------------------
 
@@ -139,7 +148,7 @@ CREATE TABLE `pictures` (
 -- Table structure for table `rates`
 --
 
-CREATE TABLE `rates` (
+CREATE TABLE IF NOT EXISTS `rates` (
   `rates_id` int(11) NOT NULL,
   `author` int(11) NOT NULL,
   `contents_id` int(11) NOT NULL,
@@ -153,7 +162,7 @@ CREATE TABLE `rates` (
 -- Table structure for table `travels`
 --
 
-CREATE TABLE `travels` (
+CREATE TABLE IF NOT EXISTS `travels` (
   `travels_id` int(11) NOT NULL,
   `users_id` int(11) NOT NULL,
   `geos_id` int(11) NOT NULL,
@@ -169,7 +178,7 @@ CREATE TABLE `travels` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `users_id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
@@ -178,7 +187,7 @@ CREATE TABLE `users` (
   `ver_code` varchar(200) NOT NULL,
   `ver_stat` tinyint(1) NOT NULL DEFAULT '0',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -194,21 +203,22 @@ INSERT INTO `users` (`users_id`, `email`, `pass`, `role`, `avatar`, `ver_code`, 
 -- Table structure for table `visitors`
 --
 
-CREATE TABLE `visitors` (
+CREATE TABLE IF NOT EXISTS `visitors` (
   `visitors_id` int(11) NOT NULL,
   `ip` varchar(255) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `visitors`
+--
+
+INSERT INTO `visitors` (`visitors_id`, `ip`, `create_at`) VALUES
+(5, '::1', '2016-10-31 01:21:38');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `belibeli`
---
-ALTER TABLE `belibeli`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categories`
@@ -268,22 +278,18 @@ ALTER TABLE `users`
 -- Indexes for table `visitors`
 --
 ALTER TABLE `visitors`
-  ADD PRIMARY KEY (`visitors_id`);
+  ADD PRIMARY KEY (`visitors_id`),
+  ADD UNIQUE KEY `ip` (`ip`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `belibeli`
---
-ALTER TABLE `belibeli`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `comments`
 --
@@ -293,7 +299,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `contens`
 --
 ALTER TABLE `contens`
-  MODIFY `contents_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `contents_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `deals`
 --
@@ -303,12 +309,12 @@ ALTER TABLE `deals`
 -- AUTO_INCREMENT for table `geos`
 --
 ALTER TABLE `geos`
-  MODIFY `geos_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `geos_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `pictures_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pictures_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `rates`
 --
@@ -323,12 +329,12 @@ ALTER TABLE `travels`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `visitors_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `visitors_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
