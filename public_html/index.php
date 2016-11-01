@@ -16,14 +16,14 @@ _run_iou("visitors",["ip"=>$_SERVER['REMOTE_ADDR']]);
         <img src="" height="50px" alt="">
         <p id="text-logo">Pusat informasi pariwisata daerah</p>
         <ul class="button-nav">
-            <li><a href="./">Home</a></li>
-            <li><a href="./p=home#places">Pariwisata</a></li>
-            <li><a href="./p=home#news">Berita</a></li>
+            <li><a href="./" style="background-color: #e15e03">Home</a></li>
+            <li><a href="./p=home#places" style="background-color: #ffac04">Pariwisata</a></li>
+            <li><a href="./p=home#news" style="background-color: #64c4b8">Berita</a></li>
             <?php if(isset($_SESSION['userdata'])): ?>
-                <li><a href="./?p=home&sp=profil">Profil</a></li>
-                <li><a href="./prcs.php?do=logout">Logout</a></li>
+                <li><a href="./?p=home&sp=profil" style="background-color: #ff9003">Profil</a></li>
+                <li><a href="./prcs.php?do=logout" style="background-color: #ff9003">Logout</a></li>
             <?php else: ?>
-                <li><a id="login-btn">Masuk</a></li>
+                <li><a id="login-btn" style="background-color: #ff9003">Masuk</a></li>
                 <div id="login">
                     <div class="form-orange">
                         <form action="../prcs.php?do=login" method="post">

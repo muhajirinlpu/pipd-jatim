@@ -159,7 +159,7 @@ nav#menu ul li a:hover{
 }
 
 .places-container{
-    background-color: rgba(0,0,0,0.2);
+    background-color: #978b7d/*rgba(0,0,0,0.2)*/;
     margin-top:10px;
 }
 
@@ -171,8 +171,8 @@ nav#menu ul li a:hover{
     text-align: center;
 }
 
-.place-contents > span{
-
+.place-contents > div{
+    margin: 0 10px;
 }
 
 .container{

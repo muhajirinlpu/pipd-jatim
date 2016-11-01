@@ -47,10 +47,10 @@
                 <?php foreach($places['data'] AS $val): ?>
                 <div class="place-contents">
                     <img src="./assets/pic/<?= $val['pic_name'] ?>" style="width: 200px; height: 130px;">
-                        <span>
+                        <div>
                             <h2><?= $val['title'] ?></h2>
                             <p><?= substr($val['descrip'],0,100) ?></p>
-                        </span>
+                        </div>
                     <a href="./?p=detail&amp;title=<?= $val['slug'] ?>">Selengkapnya</a>
                 </div>
                 <?php endforeach; ?>
