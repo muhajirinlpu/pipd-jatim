@@ -12,11 +12,13 @@ $(function(){
                         "backgroundImage" : "url('assets/pic/"+ b.pic_name +"')"
                     }).attr("data-action",a);
                     var h1 = $("<h2></h2>").html(b.title);
-                    var p = $("<p></p>").html(b.descrip.substr(0,190)+"... ");
+                    var p = $("<p></p>").html(b.descrip.substr(0,140)+"... ");
                     var a = $("<a></a>").attr("href","./?p=detail&title="+ b.slug).html("selengkapnya").css({"color":"white"});
-                    $(a).appendTo(p);
-                    $(h1).appendTo(div);
-                    $(p).appendTo(div);
+                    var container = $("<div></div>");
+                    $(h1).appendTo(container);
+                    $(p).appendTo(container);
+                    $(a).appendTo(container);
+                    $(container).appendTo(div);
                     $(div).appendTo("#slider");
                 });
                 size = data['message'].length;

@@ -12,9 +12,10 @@ _run_iou("visitors",["ip"=>$_SERVER['REMOTE_ADDR']]);
     <script type="text/javascript" src="<?= _getUrl("public","assets/pipd.js") ?>"></script>
 </head>
 <body>
+
     <nav id="nav">
-        <img src="" height="50px" alt="">
-        <p id="text-logo">Pusat informasi pariwisata daerah</p>
+        <img src="" height="50px" alt="" vspace="5" hspace="5">
+        <p id="text-logo"><span> Pusat informasi </span>pariwisata daerah</p>
         <ul class="button-nav">
             <li><a href="./" style="background-color: #e15e03">Home</a></li>
             <li><a href="./p=home#places" style="background-color: #ffac04">Pariwisata</a></li>

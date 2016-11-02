@@ -10,7 +10,7 @@
         <?php endforeach; ?>
     </div>
     <div class="video-container">
-        <video src="./assets/video/1.mkv" controls width="720px"></video>
+        <video src="./assets/video/1.mkv" poster="./assets/poster.PNG" controls width="720px"></video>
     </div>
     <div style="clear: both"></div>
 </div>

@@ -44,6 +44,7 @@
                     }
                     if(sizeof($places['data']) == 0) echo "Tidak ada hasil";
                 ?>
+                <?php for($i = 1 ;$i <= 5 ;$i++): ?>
                 <?php foreach($places['data'] AS $val): ?>
                 <div class="place-contents">
                     <img src="./assets/pic/<?= $val['pic_name'] ?>" style="width: 200px; height: 130px;">
@@ -54,6 +55,7 @@
                     <a href="./?p=detail&amp;title=<?= $val['slug'] ?>">Selengkapnya</a>
                 </div>
                 <?php endforeach; ?>
+                <?php endfor; ?>
                 <div style="clear: both;"></div>
                 <div class="paging">
                 <?php

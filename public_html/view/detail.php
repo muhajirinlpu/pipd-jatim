@@ -17,8 +17,9 @@ $rate = _get(_run("SELECT AVG(val) FROM rates WHERE contents_id = ?",[$content['
     var users_id = <?= isset($_SESSION['userdata']['users_id']) ? $_SESSION['userdata']['users_id'] :"null" ?> ;
     var contents_id = <?= $content['contents_id'] ?>;
 </script>
-<div class="container" style="margin-top: 70px">
+<div class="container" style="margin-top: 120px">
     <center><h1><?= $content['title'] ?></h1></center>
+    <p>Di publis pada <?= date_format($date,"D, d F Y ") ?> | Rating : <?= round($rate, 2) ?></p>
     <pre class="fun-text">
         <?= $content['descrip'] ?>
     </pre>
@@ -68,8 +69,7 @@ $rate = _get(_run("SELECT AVG(val) FROM rates WHERE contents_id = ?",[$content['
     </div>
 </div>
 <div class="right-content">
-    <div class="extra-content">
-        <p>Di publis pada <?= date_format($date,"D, d F Y ") ?> </p>
-        <p>Rating : <?= $rate ?></p>
-    </div>
+    <!--<div class="extra-content">
+
+    </div>-->
 </div>
