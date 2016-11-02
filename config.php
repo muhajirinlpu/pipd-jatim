@@ -10,7 +10,7 @@ return [
     "public_dir"  => "../public_html",
 
     //url config
-    "api_url"   =>  "http://localhost:1000/",
-    "admin_url" =>  "http://localhost:8000/",
-    "public_url"=>  "http://localhost:3000/"
+    "api_url"   =>  "http://192.168.1.101:1000/",
+    "admin_url" =>  "http://192.168.1.101:8000/",
+    "public_url"=>  "http://192.168.1.101:3000/"
 ];

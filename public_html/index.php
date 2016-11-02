@@ -8,13 +8,14 @@ _run_iou("visitors",["ip"=>$_SERVER['REMOTE_ADDR']]);
 <head>
     <title>Keliling Jatim</title>
     <link rel="stylesheet" href="<?= _getUrl("public","assets/pipd.css") ?>">
+    <link rel="icon" href="assets/pic/favicon.ico">
     <script type="text/javascript" src="<?= _getUrl("public","assets/jquery-3.1.0.min.js") ?>"></script>
     <script type="text/javascript" src="<?= _getUrl("public","assets/pipd.js") ?>"></script>
 </head>
 <body>
 
     <nav id="nav">
-        <img src="" height="50px" alt="" vspace="5" hspace="5">
+        <img src="./assets/pic/logo.png" height="50px" alt="" vspace="5" hspace="5">
         <p id="text-logo"><span> Pusat informasi </span>pariwisata daerah</p>
         <ul class="button-nav">
             <li><a href="./" style="background-color: #e15e03">Home</a></li>
@@ -22,7 +23,7 @@ _run_iou("visitors",["ip"=>$_SERVER['REMOTE_ADDR']]);
             <li><a href="./p=home#news" style="background-color: #64c4b8">Berita</a></li>
             <?php if(isset($_SESSION['userdata'])): ?>
                 <li><a href="./?p=home&sp=profil" style="background-color: #ff9003">Profil</a></li>
-                <li><a href="./prcs.php?do=logout" style="background-color: #ff9003">Logout</a></li>
+                <li><a href="./prcs.php?do=logout" style="background-color: #e15e03">Logout</a></li>
             <?php else: ?>
                 <li><a id="login-btn" style="background-color: #ff9003">Masuk</a></li>
                 <div id="login">

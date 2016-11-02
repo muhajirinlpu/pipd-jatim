@@ -6,6 +6,12 @@
         <link rel="stylesheet" href="<?= _getUrl("public","assets/pipd.css") ?>">
         <script type="text/javascript" src="<?= _getUrl("public","assets/jquery-3.1.0.min.js") ?>"></script>
         <script type="text/javascript" src="<?= _getUrl("public","assets/pipd.js") ?>"></script>
+        <style>
+            nav#nav{
+                height: 50px;
+                background-color: #424242;
+            }
+        </style>
     </head>
     <body>
         <?php

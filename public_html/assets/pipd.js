@@ -2,6 +2,10 @@
  * Created by someone on 21/10/2016.
  */
 $(function(){
+
+    var musicStat = false ;
+    var music = new Audio("assets/1.mp3");
+
     var fn = {
         initSlider : function(){
             var size;
@@ -48,7 +52,18 @@ $(function(){
                     });
                 }
             });
+        },
+
+        initMusic : function () {
+            if(!musicStat) {
+                music.play();
+                musicStat = true;
+            }else{
+                music.pause();
+                musicStat = false;
+            }
         }
+
     };
 
     //fn start
@@ -121,8 +136,12 @@ $(function(){
     });
 
     $("#login").bind("mouseleave",function(){
-        $("#login-btn").removeAttr("style");
+
         $(this).fadeOut();
+    });
+
+    $(document).bind("keydown",function(e){
+        if(e.keyCode == 77) fn.initMusic();
     });
 
 });
